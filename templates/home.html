@@ -1,0 +1,103 @@
+{% extends 'base.html' %}{% load static %} 
+
+{% block content %}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Sistema de Gestion Academica</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href='/home/'>Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div>
+
+    <section class="section dashboard">
+        <div class="row">
+      
+          <!-- Left side columns -->
+          <div class="col-lg-12">
+            <div class="row">
+      
+              <!-- Sales Card -->
+              <div class="col-xxl-4 col-md-6">
+                <a href='/facultad/'>
+                <div class="card info-card sales-card">
+      
+                  <div class="card-body">
+                    <h5 class="card-title">Facultades<span>| Registradas</span></h5>
+      
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <img src="{% static 'assets\img\facultades.jpg' %}" class="rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
+                      </div>
+                      <div class="ps-3">
+                        <h6>{{cantfacultad}} Facultades Registradas</h6>
+                      </div>
+                    </div>
+                  </div>
+      
+                </div>
+                </a>
+              </div><!-- End Facultades Card -->
+      
+              <!-- Gruppo Card -->
+              <div class="col-xxl-4 col-md-6">
+                <a href='/grupo/'>
+                <div class="card info-card revenue-card">
+      
+                  <div class="card-body">
+                    <h5 class="card-title">Grupos <span>| Registrados</span></h5>
+      
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <img src="{% static 'assets\img\grupos.jpg' %}" class="rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
+                      </div>
+                      <div class="ps-3">
+                        <h6>{{cantgrupos}} Grupos Registrados</h6>
+      
+                      </div>
+                    </div>
+                  </div>
+      
+                </div>
+                </a>
+              </div>
+              <!-- End Grupo Card -->
+      
+              <!-- Estudiante Card -->
+              <div class="col-xxl-4 col-xl-12">
+                <a href='/estudiante/'>
+                <div class="card info-card customers-card">
+                  <div class="card-body">
+                    <h5 class="card-title">Estudiantes<span>| Registrados</span></h5>
+      
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-oontent-center">
+                        <img src="{% static 'assets\img\estudiante.jpg' %}" class="rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
+                      </div>
+                      <div class="ps-3">
+                        <h6>{{cantestudiantes}} Estudiantes Registrados</h6>
+                      </div>
+                    </div>
+      
+                  </div>
+                </a>
+                </div>
+      
+              </div><!-- End Customers Card -->
+            </div>
+          </div><!-- End Left side columns -->
+        </div>
+        </section>
+      
+      </main>
+      
+      <div class="modal fade" id="crear" role="dialog">
+
+      </div> 
+    
+
+{% endblock  %}

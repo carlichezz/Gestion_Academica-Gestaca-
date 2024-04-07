@@ -1,0 +1,105 @@
+
+{% load widget_tweaks %}
+
+<div class="modal-dialog modal-lg"  role="document">
+  <div class="modal-content">
+      <div class="modal-header">
+          <h2 class="modal-title">Agregar Estudiante</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" >
+              
+          </button>
+      </div>
+      <form  method="POST" action="{% url 'addstudent' %}" >
+
+        {% csrf_token %}
+      
+          {% if form.errors %}
+             <div>
+                 <ul>
+                   {% for field in form %}
+                      {% for error in field.errors %}
+                      
+                        <li>{{ error }}</li>
+                      
+                      {% endfor %}
+                   
+                   {% endfor %}
+                 </ul>
+             </div>
+          {% endif %}
+          <div class="modal-body">
+            <div class="row">
+              <div class="col">
+                <div class="form-floating">
+                   {{ form.nombre|add_class:"form-control" }}
+                  <label for="{{ form.nombre.id_for_label}}">Nombre</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-floating">
+                   {{ form.apellido|add_class:"form-control" }}
+                  <label for="{{ form.apellido.id_for_label }}">Apellido</label>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col">
+                <div class="form-floating">
+                   {{ form.correo|add_class:"form-control" }}
+                  <label for="{{ form.correo.id_for_label}}">Correo</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-floating">
+                   {{ form.user|add_class:"form-control" }}
+                  <label for="{{ form.user.id_for_label }}">User</label>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col">
+                <div class="form-floating">
+                   {{ form.grupo|add_class:"form-control" }}
+                  <label for="{{ form.grupo.id_for_label}}">Grupo</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-floating">
+                   {{ form.facultad|add_class:"form-control" }}
+                  <label for="{{ form.facultad.id_for_label }}">Facultad</label>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col">
+                <div class="form-floating">
+                   {{ form.ci|add_class:"form-control" }}
+                  <label for="{{ form.ci.id_for_label}}">Carne de Identidad</label>
+                </div>
+              </div>
+            </div>
+           
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+            <button class="btn btn-outline-primary" type="submit">Confirmar</button>
+          </div>
+      </form>
+  </div>
+</div>
+
+<script>
+  
+  {% if form.errors %}
+    var errors = '';
+     {% for field in form %}
+      {% for error in field.errors %}
+         errors += '{{error}}\n';
+      {% endfor %}   
+     {% endfor %}
+     
+  {% endif %} 
+</script>

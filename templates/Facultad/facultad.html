@@ -1,0 +1,80 @@
+{% extends 'base.html' %}{% load static %}
+
+{% block content %}
+<main id="main" class="main">
+  
+  <div class="pagetitle">
+    <h1>Facultades</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href='/home/'>Home</a></li>
+        <li class="breadcrumb-item"></li>
+      </ol>
+    </nav>
+  </div>
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+  
+        <div class="card">
+          
+          <div class="card-body">
+            <br>
+            <h5 class="card-title"></h5>
+            <div class="">
+              
+            </div>     
+            <!-- Table with stripped rows -->
+            <table class="table" id="data">
+              {{title}}
+
+              <thead>
+                  <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Cantidad de Grupos</th>
+                  </tr>
+              </thead>
+              <tbody>
+                {% for facultad in facultades %}
+                  <tr>
+                    <td>{{ facultad.id }}</td>
+                    <td>{{ facultad.nombre }}</td>
+                    <td><a href="/facultad/{{ facultad.id }}">{{ facultad.cantgrupos }}</a></td>
+                  </tr>
+                {% empty %}
+                  <tr>
+                    <td colspan="9">No hay facultades registrados.</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+          </table>
+{% endblock %}
+{% block extrajs%}
+ <script type="text/javascript">
+
+   var $ = jQuery.noConflict();
+   function abrir_modal(url){
+    $('#editar').load(url, function(){
+      $(this).modal('show');
+
+    });
+  }
+
+  function abrir_modal_eliminar(url){
+    $('#eliminar').load(url,function(){
+     $(this).modal('show');
+
+    });
+  }
+
+  function abrir_modal_crear(url){
+    $('#crear').load(url,function(){
+      $(this).modal('show');
+
+    });
+  };
+
+ </script>
+{% endblock%}

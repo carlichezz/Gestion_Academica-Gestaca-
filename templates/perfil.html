@@ -1,0 +1,35 @@
+{% extends 'base.html' %}{% load static %} 
+
+{% block content %}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Perfil de {{userprofile}}</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href='/home/'>Home</a></li>
+          <li class="breadcrumb-item active">Pefil</li>
+        </ol>
+      </nav>
+    </div>
+    
+    <div class="profile-card">
+      <h4>{{userprofilegroup}}</h4>
+      <img src="{% static 'assets\img\deffaultusser.jpg' %}" alt="Profile" class="rounded-circle" style="width: 200px; height: 200px;">
+      {% if estudiante == 'NoEstudiante' %}
+      <h3>@{{userprofile.username}}</h3>
+      <h6>{{userprofile.email}}</h6>
+      {% else %}
+      <h2>{{estudiante.nombre}} {{estudiante.apellido}}</h2>
+      <h3>@{{estudiante.user}}</h3>
+      <h6>Correo:{{estudiante.correo}}</h6>
+      <h6>Grupo:{{estudiante.grupo}}</h6>
+      <h6>Facultad:{{estudiante.facultad}}</h6>
+      <h6>CI:{{estudiante.ci}}</h6>
+      {% endif %}
+  </div>
+    
+    </main>
+
+{% endblock  %}
